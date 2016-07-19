@@ -1,0 +1,24 @@
+{
+  "name": "HibernateBoard",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "install": {
+    "path": "src/main/webapp/lib",
+    "source": {
+      "jquery": "bower_components/jquery/dist/**",
+      "bootstrap": "bower_components/bootstrap/dist/**"
+    }
+  }
+}
