@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	* { margin: 0px; padding: 0px; box-sizing: border-box; }
+	html, body { width: 100%; height: 100% }
+	
+	#content {
+		width: 80%;
+		height: 90%;
+		margin: 2.5% auto;
+	}
+</style>
+<title>Regist</title>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/bootstrap.js"></script>
+<script src="../js/common.js"></script>
+<script>
+	$(function () {
+		$("#registForm").attr("action", contextRoot + "regist.do");
+		
+		$("#cancelBtn").click(function () {
+			location.href = contextRoot + "index.do";
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="content">
+		<form id="registForm" action="" name="registForm" method="POST">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" placeholder="제목을 입력하세요." /></td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td><input type="text" name="writer" placeholder="이름을 입력하세요." /></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><input type="text" name="content" placeholder="내용을 입력하세요." /></td>
+				</tr>
+			</table>
+			<button type="submit">Regist</button>
+			<button type="button" id="cancelBtn">Cancel</button>
+			<button type="reset">Reset</button>
+		</form>
+	</div>
+</body>
+</html>

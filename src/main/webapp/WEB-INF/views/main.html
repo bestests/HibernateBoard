@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	* { margin: 0px; padding: 0px; box-sizing: border-box; }
+	html, body { width: 100%; height: 100% }
+	
+	#content {
+		width: 80%;
+		height: 90%;
+		margin: 2.5% auto;
+	}
+</style>
+<title>Main</title>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/bootstrap.js"></script>
+<script src="../js/common.js"></script>
+<script>
+	$(function () {
+		$.getJSON(
+			contextRoot + "list.do",
+			function (result) {
+				for(var i in result.list) {
+					var content = result.list[i];
+					var trObj = $("<tr id='content_" + content.no + "'>").append($("<td>").text(content.no))
+								                                         .append($("<td>").append($("<a href='" + contextRoot + "detail.do?no=" + content.no + "'>" + content.title + "</a>"))		 )
+								                                         .append($("<td>").text(content.writer))
+								                                         .append($("<td>").text(content.regDate));
+					$(".table").append(trObj);
+				}
+			}
+		);
+		
+		$("button").click(function () {
+			location.href = contextRoot + "regist.do";
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="content">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>No</td>
+					<td>Title</td>
+					<td>Writer</td>
+					<td>Date</td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4" id="listSize"></td>
+				</tr>
+			</tfoot>	
+		</table>
+		<button>Regist</button>
+	</div>
+</body>
+</html>

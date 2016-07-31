@@ -22,7 +22,7 @@ public class BoardVO {
 	@Column(name="BOARD_WRITER")
 	String writer;
 	@Column(name="BOARD_REG_DATE")
-	Date reg_date;
+	String regDate;
 	
 	public int getNo() {
 		return no;
@@ -48,10 +48,10 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getReg_date() {
-		return reg_date;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 }

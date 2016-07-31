@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	* { margin: 0px; padding: 0px; box-sizing: border-box; }
+	html, body { width: 100%; height: 100% }
+	
+	#content {
+		width: 80%;
+		height: 90%;
+		margin: 2.5% auto;
+	}
+</style>
+<title>Detail</title>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/bootstrap.js"></script>
+<script src="../js/common.js"></script>
+<script>
+	$(function () {
+		var no = window.location.href.split("?")[1].split("=")[1];
+		$.getJSON(
+			contextRoot + "detailView.do",
+			"no=" + no,
+			function (result) {
+				var vo = result.boardVO;
+				$("#title").text(vo.title);
+				$("#writer").text(vo.writer);
+				$("#regDate").text(vo.regDate);
+				$("#content1").text(vo.content);
+			}
+		);
+		
+		$("#updateBtn").click(function () {
+			location.href = contextRoot + "update.do?no=" + no;
+		});
+		
+		$("#listBtn").click (function () {
+			location.href = contextRoot + "index.do";	
+		});
+		
+
+		$("#deleteBtn").click(function () {
+			location.href = contextRoot + "delete.do?no=" + no;
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="content">
+		<table>
+			<tr>
+				<td>제목</td>
+				<td id="title"></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td id="writer"></td>
+			</tr>
+			<tr>
+				<td>등록일</td>
+				<td id="regDate"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td id="content1"></td>
+			</tr>
+		</table>
+		<button type="button" id="updateBtn">Update</button>
+		<button type="button" id="deleteBtn">Delete</button>
+		<button type="button" id="listBtn">List</button>
+	</div>
+</body>
+</html>
