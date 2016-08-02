@@ -18,7 +18,7 @@
 <script src="../js/common.js"></script>
 <script>
 	$(function () {
-		var no = window.location.href.split("?")[1].split("=")[1];
+		var no = getParams(window.location.href).no;
 		console.dir(no);
 		$.getJSON(
 			contextRoot + "detailView.do",
@@ -35,7 +35,7 @@
 			}
 		);
 		
-		$("#updateForm").attr("action", contextRoot + "updateOne.do");
+		$("#updateForm").attr("action", contextRoot + "update.do");
 		
 		$("#cancelBtn").click(function () {
 			location.href = contextRoot + "detail.do?no=" + no;

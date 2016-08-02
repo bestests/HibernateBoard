@@ -63,12 +63,12 @@ public class BoardController {
 		return dao.selectOne(no);
 	}
 	
-	@RequestMapping("update")
-	public String updatePage(int no) {
+	@RequestMapping(value="update", method=RequestMethod.GET)
+	public String updatePage() {
 		return "update";
 	}
 	
-	@RequestMapping("updateOne")
+	@RequestMapping(value="update", method=RequestMethod.POST)
 	public String updateOne(BoardVO vo) {
 		dao.updateOne(vo);
 		

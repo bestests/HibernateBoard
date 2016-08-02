@@ -18,7 +18,7 @@
 <script src="../js/common.js"></script>
 <script>
 	$(function () {
-		var no = window.location.href.split("?")[1].split("=")[1];
+		var no = getParams(window.location.href).no;
 		$.getJSON(
 			contextRoot + "detailView.do",
 			"no=" + no,
