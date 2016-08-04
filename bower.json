@@ -12,13 +12,15 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "less": "^2.7.1"
   },
   "install": {
     "path": "src/main/webapp/lib",
     "source": {
       "jquery": "bower_components/jquery/dist/**",
-      "bootstrap": "bower_components/bootstrap/dist/**"
+      "bootstrap": "bower_components/bootstrap/dist/**",
+      "less": "bower_components/less/dist/**"
     }
   }
 }

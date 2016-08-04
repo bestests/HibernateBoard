@@ -5,21 +5,23 @@
 <style>
 	* { margin: 0px; padding: 0px; box-sizing: border-box; }
 	html, body { width: 100%; height: 100% }
-	
+
 	#content {
 		width: 80%;
 		height: 90%;
 		margin: 2.5% auto;
 	}
 </style>
+<link rel="stylesheet/less" type="text/css" href="../lib/bootstrap/bootstrap.less" />
 <title>Regist</title>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrap/bootstrap.js"></script>
+<script src="../lib/less/less.js"></script>
 <script src="../js/common.js"></script>
 <script>
 	$(function () {
 		$("#registForm").attr("action", contextRoot + "regist.do");
-		
+
 		$("#cancelBtn").click(function () {
 			location.href = contextRoot + "index.do";
 		});
