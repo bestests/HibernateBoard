@@ -7,11 +7,8 @@ var getParams = function (url) {
   var params   = url.split("?")[1];
   var paramArr = [];
 
-  if(params.indexOf("&") >= 0) {
-    paramArr = params.split("&");
-  } else {
-    paramArr[0] = params;
-  }
+  if(params.indexOf("&") >= 0) paramArr    = params.split("&");
+  else                         paramArr[0] = params;
 
   for(var i = 0 ; i < paramArr.length ; i++) {
     var param = paramArr[i].split("=");
