@@ -1,0 +1,108 @@
+* { margin: 0px; padding: 0px; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  width: 70%;
+  height: auto;
+  margin: 5% auto;
+}
+
+.btnArea {
+  width: 70%;
+  height: auto;
+  margin: 5% auto;
+}
+
+.main .listTable {
+  width: 100%;
+}
+
+.listTable thead tr th {
+  border-bottom: 2px solid black;
+}
+
+.listTable tbody tr th, .listTable tbody tr td {
+  border-bottom: 1px solid grey;
+}
+
+.listTable tbody tr td:nth-child(2) {
+  width: 40%;
+}
+
+.listTable tbody tr td:nth-child(3) {
+  text-align: center;
+}
+
+.listTable tbody tr td:last-child {
+  width: 20%;
+  text-align: center;
+}
+
+td a {
+  max-width: 480px;
+  min-width: 100px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  word-wrap:normal;
+}
+
+.listTable tbody tr:hover th, .listTable tbody tr:hover td {
+  background: #BBE4F2;
+  color: black;
+}
+
+.listTable tbody tr:hover td a {
+  color: black;
+}
+
+.main .inputTable {
+  width: 60%;
+  margin: 0px auto;
+}
+
+.inputTable tr{
+  height: 50px;
+}
+
+.inputTable tr td input {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: 2px solid #BBE4F2;
+}
+
+.inputTable tr th, .inputTable tr td {
+  border-bottom: 1px solid grey;
+}
+
+.btnArea button {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  float: right;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.blueBtn {
+  background-color: #37D5ED;
+}
+
+.redBtn {
+  background-color: #ED4F37;
+}
+
+.greenBtn {
+  background-color: #7AED37;
+}
