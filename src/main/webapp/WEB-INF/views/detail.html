@@ -14,13 +14,54 @@
 			contextRoot + "detailView.do",
 			"no=" + no,
 			function (result) {
-				var vo = result.boardVO;
+				var vo = result.vo;
+				console.dir(vo);
+				var cList = result.cList;
 				$("#title").text(vo.title);
 				$("#writer").text(vo.writer);
 				$("#regDate").text(vo.regDate);
 				$("#content").text(vo.content);
+				
+				if(!cList.length) {
+					$(".commentTable").append($("<tr>").append($("<td colspan='4'>").text("등록된 댓글이 없습니다.")));
+				} else {
+					for(var i in cList) {
+						var comment = cList[i];
+						
+						var commentObj = $("<tr>").append($("<td>").text(comment.content))
+								 				  .append($("<td>").text(comment.writer))
+								 				  .append($("<td>").text(comment.regDate))
+								 				  .append($("<td><a><button class='delBtn' onclick='delComment(" + comment.no + ")'>X</button></a></td>"));
+						
+						$(".commentTable").append(commentObj);
+					}
+				}
 			}
 		);
+		
+		$("form").submit(function () {
+			console.dir($("form").serialize());
+			$.getJSON(
+				contextRoot + "registComment.do",
+				$("form").serialize(),
+				function (result) {
+					var cVo = result.commentVO;
+					
+					var commentObj = $("<tr>").append($("<td>").text(cVo.content))
+ 				  							  .append($("<td>").text(cVo.writer))
+	 				  						  .append($("<td>").text(cVo.regDate))
+	 										  .append($("<td><a><button class='delBtn' onclick='delComment(" + cVo.no + ")'>X</button></a></td>"));
+
+					$(".commentTable").prepend(commentObj);
+					
+					$("#cWriter").val("");
+					$("#cContent").val("");
+				}
+			);
+			return false;
+		});
+		
+		$("#boardNo").val(no);
 		
 		$("#updateBtn").click(function () {
 			location.href = contextRoot + "update.do?no=" + no;
@@ -29,7 +70,6 @@
 		$("#listBtn").click (function () {
 			location.href = contextRoot + "index.do";	
 		});
-		
 
 		$("#deleteBtn").click(function () {
 			location.href = contextRoot + "delete.do?no=" + no;
@@ -62,6 +102,29 @@
 		<button type="button" class="greenBtn" id="updateBtn">Update</button>
 		<button type="button" class="redBtn" id="deleteBtn">Delete</button>
 		<button type="button" class="blueBtn" id="listBtn">List</button>
+	</div>
+	<div class="commentArea">
+		<div class="commentInput">
+			<form method="POST">
+				<input type="hidden" id="boardNo" name="boardNo" />
+				<label for="cWriter">이름 :</label>
+				<input type="text" id="cWriter" name="writer"/>
+				<label for="cContent">내용 :</label>
+				<input type="text" id="cContent" name="content" />
+				<button type="submit">Regist</button>
+			</form>
+		</div>
+		<table class="commentTable">
+			<thead>
+				<tr>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>등록일</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 	</div>
 </body>
 </html>

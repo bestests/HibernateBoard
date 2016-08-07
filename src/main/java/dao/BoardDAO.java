@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import util.HibernateUtil;
 import vo.BoardVO;
+import vo.CommentVO;
 
 @Component
 public class BoardDAO {
@@ -89,5 +91,30 @@ public class BoardDAO {
 		session.delete(session.get(BoardVO.class, no));
 		
 		session.getTransaction().commit();
+	}
+	
+	public List<CommentVO> selectCommentAll(int boardNo) {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(CommentVO.class);
+		criteria.add(Restrictions.eqOrIsNull("boardNo", boardNo));
+		criteria.addOrder(Order.desc("no"));
+		
+		List<CommentVO> list = criteria.list();
+		
+		session.getTransaction().commit();
+		
+		return list;
+	}
+	
+	public CommentVO insertComment(CommentVO cVo) {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		
+		CommentVO vo = session.get(CommentVO.class, session.save(cVo));
+		
+		session.getTransaction().commit();
+		
+		return vo;
 	}
 }

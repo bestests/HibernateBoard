@@ -25,6 +25,7 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
  
+        <mapping class="vo.CommentVO" />
         <mapping class="vo.BoardVO" />
     </session-factory>
  

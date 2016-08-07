@@ -13,7 +13,7 @@
 		$.getJSON(
 			contextRoot + "list.do",
 			function (result) {
-				if(!result.list) {
+				if(!result.list.length) {
 					$("table").append($("<tr>").append($("<th colspan='4'>").text("등록된 게시글이 없습니다.")));
 				}
 				for(var i in result.list) {

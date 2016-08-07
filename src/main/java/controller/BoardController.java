@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import dao.BoardDAO;
 import service.BoardService;
 import vo.BoardVO;
+import vo.CommentVO;
 
 @Controller
 @RequestMapping("/board/")
@@ -59,8 +59,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping("detailView")
-	public BoardVO detailView(int no) {
-		return dao.selectOne(no);
+	public Map<String, Object> detailView(int no) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("vo", dao.selectOne(no));
+//		result.put("cList", dao.selectCommentAll(no));
+		
+		return result;
 	}
 	
 	@RequestMapping(value="update", method=RequestMethod.GET)
@@ -79,5 +84,12 @@ public class BoardController {
 	public String delete(int no) {
 		dao.deleteOne(no);
 		return "redirect:http://localhost:8008/HibernateBoard/board/index.do"; 
+	}
+	
+	@RequestMapping("registComment")
+	public CommentVO registComment(CommentVO cVo) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		cVo.setRegDate(sdf.format(new Date()));
+		return dao.insertComment(cVo);
 	}
 }

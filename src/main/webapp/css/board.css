@@ -13,7 +13,7 @@ html, body {
 
 .btnArea {
   width: 70%;
-  height: auto;
+  height: 30px;
   margin: 5% auto;
 }
 
@@ -106,3 +106,54 @@ td a {
 .greenBtn {
   background-color: #7AED37;
 }
+
+.commentArea {
+	width: 70%;
+	height: auto;
+	margin: 0px auto;
+}
+
+.commentArea .commentInput {
+	width: 60%;
+	margin: 0px auto;
+}
+
+#cWriter {
+	width: 20%;
+}
+
+#cContent {
+	width: 50%;
+}
+
+.commentTable {
+	width: 60%;
+	margin: 10px auto;
+}
+
+.commentTable tr th{
+	border-bottom: 2px solid black;
+} 
+
+.commentTable tr th:first-child {
+	width: 40%;
+}
+ 
+.commentTable tr th:nth-child(2) {
+	width: 30%;
+}
+ 
+.commentTable tr th:nth-child(3) {
+	width: 20%;
+}
+
+.commentTable tbody tr td:last-child {
+	text-align: center;
+}
+
+.delBtn {
+	background: white;
+	color: red;
+	border: none;
+}
+ 
